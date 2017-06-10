@@ -1,25 +1,25 @@
 # How to automate deep learning training with Kubernetes GPU-cluster
 
-This guide should help fellow researchers and hobbyists to easily automate and accelerate there deep leaning training with there own Kubernetes GPU cluster.<br>
-Therefore I will explain how to easily setup a GPU cluster on multiple Ubuntu 16.04 bare metal servers and provide some useful scripts and .yaml files that do the entire setup for you.
+This guide should help fellow researchers and hobbyists to easily automate and accelerate there deep leaning training with their own Kubernetes GPU cluster.<br>
+Therefore I will explain how to easily set up a GPU cluster on multiple Ubuntu 16.04 bare metal servers and provide some useful scripts and .yaml files that do the entire setup for you.
 
 By the way: If you need a Kubernetes GPU-cluster for other reasons, this guide might be helpful to you as well.
 
 **Why did I write this guide?**<br>
-I have worked as in intern for the Startup [understand.ai](https://understand.ai) and noticed the hassle of firstly designing a machine learning algorithm locally and then bringing it to the cloud for training with different parameters and datasets.<br>
+I have worked as in intern for the startup [understand.ai](https://understand.ai) and noticed the hassle of firstly designing a machine learning algorithm locally and then bringing it to the cloud for training with different parameters and datasets.<br>
 The second part, bringing it to the cloud for extensive training, takes always longer than thought, is frustrating and involves usually a lot of pitfalls.
 
-For this reason I decided to work on this problem and make the second part effortless, easy and quick.<br>
+For this reason I decided to work on this problem and make the second part effortless, simple and quick.<br>
 The result of this work is this handy guide, that describes how everyone can setup their own Kubernetes GPU cluster to accelerate their work.
 
 **The new process for the deep learning researchers:**<br>
-The automated deep learning training with a Kubernetes GPU-cluster improves the process of brining your algorithm for training in the cloud significantly.
+The automated deep learning training with a Kubernetes GPU cluster significantly improves your process of training your models in the cloud.
 
-This illustration visualizes the new workflow, that involves only two simple steps:<br>
+This illustration visualizes the new workflow that involves only two simple steps:<br>
 ![My inspiration for the project, designed by Langhalsdino.](resources/description.jpg?raw=true "My inspiration for the project")
 
 **Disclaimer**<br>
-Be aware, that the following sections might be opinionated. Kubernetes is an evolving, fast paced environment, which means this guide will probably be outdated at times, depending on the authors spare time and individual contributions. Due to this fact contributions are highly appreciated.
+Be aware that the following sections might be opinionated. Kubernetes is an evolving, fast paced environment, which means this guide will probably be outdated at times, depending on the authors spare time and individual contributions. Due to this fact contributions are highly appreciated.
 
 ## Table of Contents
 
