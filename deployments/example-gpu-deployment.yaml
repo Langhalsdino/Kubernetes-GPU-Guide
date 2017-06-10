@@ -1,0 +1,48 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: tf-jupyter
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: tf-jupyter
+    spec:
+      volumes:
+      - hostPath:
+          path: /usr/lib/nvidia-375/bin
+        name: bin
+      - hostPath:
+          path: /usr/lib/nvidia-375
+        name: lib
+      containers:
+      - name: tensorflow
+        image: tensorflow/tensorflow:0.11.0rc0-gpu
+        ports:
+        - containerPort: 8888
+        resources:
+          limits:
+            alpha.kubernetes.io/nvidia-gpu: 1
+        volumeMounts:
+        - mountPath: /usr/local/nvidia/bin
+          name: bin
+        - mountPath: /usr/local/nvidia/lib
+          name: lib
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tf-jupyter-service
+  labels:
+    app: tf-jupyter
+spec:
+  selector:
+    app: tf-jupyter
+  ports:
+  - port: 8888
+    protocol: TCP
+    nodePort: 30061
+  type: LoadBalancer
+---
