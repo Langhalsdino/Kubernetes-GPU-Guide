@@ -31,8 +31,8 @@ Be aware that the following sections might be opinionated. Kubernetes is an evol
         - [Use fast setup script](#fast-track---setup-script)
         - [Manually step by step instructions](#detailed-step-by-step-instructions)
   * [How to build your GPU container](#how-to-build-your-gpu-container)
-        - [Essential parts of .yml](#essential-parts-of-yml)
-        - [Example GPU deployment](#example-gpu-deployment)
+    - [Essential parts of .yml](#essential-parts-of-yml)
+    - [Example GPU deployment](#example-gpu-deployment)
   * [Some helpful commands](#some-helpful-commands)
   * [Acknowledgements](#acknowledgements)
   * [Authors](#authors)
@@ -180,7 +180,7 @@ I will use wave-works, just because of my personal preference ;)
 ```
 kubectl apply -f https://git.io/weave-kube-1.6
 ```
-**5.II** You are ready to go, now check that pods that all pods are online to confirm that everything is working ;)
+**7** You are ready to go, now check that pods that all pods are online to confirm that everything is working ;)
 ```
 kubectl get pods --all-namespaces
 ```
@@ -280,7 +280,7 @@ export KUBECONFIG=~/.kube/admin.conf
 ```
 You are ready to use kubectl on you local client.
 
-**3.II** You can test by listing all your pods
+**4** You can test by listing all your pods
 ```
 kubectl get pods --all-namespaces
 ```
