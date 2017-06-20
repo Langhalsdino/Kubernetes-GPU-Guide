@@ -72,7 +72,7 @@ This setup works perfectly for the described  use case - for other use cases, op
 **Worker**
 
 + Ubuntu 16.04 with root access
-    - I used a Google Compute Engine VM-Instance
+    - I used a Google Compute Engine VM-Instance with NVIDIA GPUs
 + SSH access
 + ufw deactivated
 + Enabled Ports (udp and tcp)
@@ -89,7 +89,7 @@ I have created two scripts that fully initiate the master and worker node as des
 
 <h4>Fast Track - Setup script</h4>
 
-Ok, let's take the fast track. Copy the corresponding scripts on your [master](scripts/init-master.sh) and [workers](scripts/init-worker.sh).<br>
+Ok, let's take the fast track. Copy the corresponding scripts on your [master](scripts/init-master.sh) and [workers](scripts/init-worker.sh) / [workers-with-cuda](scripts/init-worker-with-cuda.sh).<br>
 
 **MASTER NODE**
 
@@ -203,7 +203,9 @@ EOF
 apt-get update'
 ```
 
-**2.** Install docker-engine, kubeadm, kubectl, kubernetes-cni
+**2.** Installation of all the necessary software components, that will bringe this cluster to live. 
+
+**2.I** First install docker-engine, kubeadm, kubectl and kubernetes-cni
 
 ```
 sudo apt-get install -y docker-engine
@@ -213,7 +215,21 @@ sudo usermod -aG docker $USER
 echo 'You might need to reboot / relogin to make docker work correctly'
 ```
 
-**3.** Since we want to build a cluster that uses GPUs we need to enable GPU acceleration in the worker nodes that have a GPU installed.
+**2.II** If you worker node has a GPU installed, you will need to install the drivers and GPU-acceleration libraries.
+This guide used NVIDIA-GPUs, therefore we need to install the NVIDIA-Drivers, CUDA and more.
+
+```
+# Install Cuda and Nvidia driver
+sudo apt-get install linux-headers-$(uname -r)
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt-get update
+sudo apt-get install nvidia-375
+sudo apt-get install nvidia-cuda-dev nvidia-cuda-toolkit nvidia-nsight
+```
+
+You can check the installation by running the command ```nvidia-smi``` in the commandline.
+
+**3.** Since we want to build a cluster that uses GPUs we need to enable GPU acceleration in the worker nodes.
 Keep in mind, that this instruction may become obsolete or change completely in a later version of Kubernetes!
 
 **3.I**
