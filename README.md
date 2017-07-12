@@ -1,7 +1,7 @@
 # How to automate deep learning training with Kubernetes GPU-cluster
 
-This guide should help fellow researchers and hobbyists to easily automate and accelerate there deep leaning training with their own Kubernetes GPU cluster.<br>
-Therefore I will explain how to easily set up a GPU cluster on multiple Ubuntu 16.04 bare metal servers and provide some useful scripts and .yaml files that do the entire setup for you.
+This guide should help fellow researchers and hobbyists to easily automate and accelerate deep leaning training on their own Kubernetes GPU cluster.<br>
+Therefore, I will explain how to easily set up a GPU cluster on multiple Ubuntu 16.04 bare metal servers and provide some useful scripts and .yaml files that do the entire setup for you.
 
 By the way: If you need a Kubernetes GPU-cluster for other reasons, this guide might be helpful to you as well.
 
@@ -203,7 +203,7 @@ EOF
 apt-get update'
 ```
 
-**2.** Installation of all the necessary software components, that will bringe this cluster to live. 
+**2.** Installation of all the necessary software components, that will bringe this cluster to live.
 
 **2.I** First install docker-engine, kubeadm, kubectl and kubernetes-cni
 
@@ -220,11 +220,11 @@ This guide used NVIDIA-GPUs, therefore we need to install the NVIDIA-Drivers, CU
 
 ```
 # Install Cuda and Nvidia driver
-sudo apt-get install linux-headers-$(uname -r)
+sudo apt-get install -y linux-headers-$(uname -r)
 sudo add-apt-repository ppa:graphics-drivers/ppa
 sudo apt-get update
-sudo apt-get install nvidia-375
-sudo apt-get install nvidia-cuda-dev nvidia-cuda-toolkit nvidia-nsight
+sudo apt-get install -y nvidia-375
+sudo apt-get install -y nvidia-cuda-dev nvidia-cuda-toolkit nvidia-nsight
 ```
 
 You can check the installation by running the command ```nvidia-smi``` in the commandline.

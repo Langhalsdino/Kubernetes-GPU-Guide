@@ -16,11 +16,13 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 
 # Install Cuda and Nvidia driver
-sudo apt-get install linux-headers-$(uname -r)
+sudo apt-get install -y linux-headers-$(uname -r)
 sudo add-apt-repository ppa:graphics-drivers/ppa
 sudo apt-get update
-sudo apt-get install nvidia-375
-sudo apt-get install nvidia-cuda-dev nvidia-cuda-toolkit nvidia-nsight
+sudo apt-get install -y nvidia-375
+sudo apt-get install -y nvidia-cuda-dev nvidia-cuda-toolkit nvidia-nsight
+
+echo 'In order to use cudnn, you will need to install it seperadly. \nVisit https://developer.nvidia.com/cudnn'
 
 sudo systemctl enable docker && systemctl start docker
 sudo systemctl enable kubelet && systemctl start kubelet
