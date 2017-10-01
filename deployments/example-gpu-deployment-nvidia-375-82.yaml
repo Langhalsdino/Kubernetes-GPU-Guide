@@ -1,0 +1,59 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: tf-jupyter
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: tf-jupyter
+    spec:
+      volumes:
+      - name: nvidia-driver-375
+        hostPath:
+          path: /usr/lib/nvidia-375
+      - name: libcuda-so
+        hostPath:
+          path: /usr/lib/x86_64-linux-gnu/libcuda.so
+      - name: libcuda-so-1
+        hostPath:
+          path: /usr/lib/x86_64-linux-gnu/libcuda.so.1
+      - name: libcuda-so-375-82
+        hostPath:
+          path: /usr/lib/x86_64-linux-gnu/libcuda.so.375.82
+      containers:
+      - name: tensorflow
+        image: tensorflow/tensorflow:0.11.0rc0-gpu
+        ports:
+        - containerPort: 8888
+        resources:
+          limits:
+            alpha.kubernetes.io/nvidia-gpu: 1
+        volumeMounts:
+        - name: nvidia-driver-375
+          mountPath: /usr/local/nvidia
+          readOnly: true
+        - name: libcuda-so
+          mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so
+        - name: libcuda-so-1
+          mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so.1
+        - name: libcuda-so-375-82
+          mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so.375.82
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tf-jupyter-service
+  labels:
+    app: tf-jupyter
+spec:
+  selector:
+    app: tf-jupyter
+  ports:
+  - port: 8888
+    protocol: TCP
+    nodePort: 30061
+  type: LoadBalancer
+---
