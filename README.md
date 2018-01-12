@@ -23,17 +23,17 @@ Be aware, that the following sections might be opinionated. Kubernetes is an evo
 
 ## Table of Contents
 
-  * [Quick Kubernetes revive]()
-  * [Rough overview on the structure of the cluster]()
-  * [Initiate nodes]()
-    - [Constraints of my setup]()
-    - [Setup instructions]()
-        - [Use fast setup script]()
-        - [Manually step by step instructions]()
-  * [How to build your GPU container]()
-  * [Some helpful commands]()
-  * [Acknowledgements]()
-  * [License]()
+  * [Quick Kubernetes revive](#quick-kubernetes-revive)
+  * [Rough overview on the structure of the cluster](#rough-overview-on-the-structure-of-the-cluster)
+  * [Initiate nodes](#initiate-nodes)
+    - [Constraints of my setup](#constraints-of-my-setup)
+    - [Setup instructions](#setup-instructions)
+        - [Use fast setup script](#fast-track---setup-script)
+        - [Manually step by step instructions](#detailed-step-by-step-instructions)
+  * [How to build your GPU container](#how-to-build-your-gpu-container)
+  * [Some helpful commands](#some-helpful-commands)
+  * [Acknowledgements](#acknowledgements)
+  * [License](#license)
 
 ## Quick Kubernetes revive
 
