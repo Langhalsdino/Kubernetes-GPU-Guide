@@ -317,7 +317,8 @@ The actual path differ from machine to machine, since they are set by your Nvidi
 ```
 volumes:
     - hostPath:
-        path: /usr/lib/nvidia-375/bin name: bin
+        path: /usr/lib/nvidia-375/bin 
+        name: bin
     - hostPath:
         path: /usr/lib/nvidia-375
         name: lib
