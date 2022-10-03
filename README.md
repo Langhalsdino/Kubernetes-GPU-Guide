@@ -43,6 +43,7 @@ Be aware, that the following sections might be opinionated. Kubernetes is an evo
   * [Kubernetes concepts](https://kubernetes.io/docs/concepts/)
   * [Kubernetes by example](http://kubernetesbyexample.com/)
   * [Kubernetes basics - interactive tutorial](https://kubernetes.io/docs/tutorials/kubernetes-basics/)
+  * [Kubernetes Tutorial for Beginners – Basic Concepts and Examples by Spacelift](https://spacelift.io/blog/kubernetes-tutorial)
 
 ## Rough overview on the structure of the cluster
 The main idea is, to have a small CPU only master node, that controls a cluster of GPU-worker nodes.
